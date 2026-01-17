@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Token dApp</title>
+  <style>
+    body { font-family: system-ui, Arial; max-width: 900px; margin: 30px auto; }
+    button { padding: 10px 14px; cursor: pointer; }
+    input { padding: 10px; width: 100%; box-sizing: border-box; margin: 6px 0 12px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .box { padding: 14px; border: 1px solid #ddd; border-radius: 10px; margin-top: 12px; }
+    .err { color: #b00020; white-space: pre-wrap; margin-top: 10px; }
+    code { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
+    .muted { color: #666; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Token dApp</h1>
+
+  <div class="box">
+    <button id="btnConnect">Connect Wallet</button>
+    <div style="margin-top:10px">
+      <div><b>Status:</b> <span id="status">Not connected</span></div>
+      <div><b>Account:</b> <code id="account">—</code></div>
+      <div><b>Network ChainId:</b> <code id="chain">—</code></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 style="margin:0 0 10px">Balances</h2>
+    <div class="row">
+      <div>
+        <div class="muted">Token</div>
+        <div><b id="tokenName">Week4Token</b> (<span id="tokenSymbol">W4T</span>)</div>
+      </div>
+      <div>
+        <div class="muted">Your balance</div>
+        <div><b id="balance">—</b></div>
+      </div>
+    </div>
+    <button id="btnRefresh" style="margin-top:10px">Refresh Balance</button>
+  </div>
+
+  <div class="box">
+    <h2 style="margin:0 0 10px">Transfer Tokens</h2>
+
+    <label>To address</label>
+    <input id="to" placeholder="0x..." />
+
+    <label>Amount</label>
+    <input id="amount" placeholder="e.g. 10" />
+
+    <button id="btnTransfer">Transfer</button>
+
+    <div style="margin-top:10px" class="muted">
+      Tx hash: <code id="txhash">—</code>
+    </div>
+
+    <div class="muted" id="events" style="margin-top:10px"></div>
+    <div class="err" id="error"></div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
